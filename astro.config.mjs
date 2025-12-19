@@ -59,6 +59,20 @@ export default defineConfig({
             href: "/site.webmanifest",
           },
         },
+        {
+          tag: "meta",
+          attrs: {
+            property: "og:site_name",
+            content: "raphii.co",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            name: "twitter:site",
+            content: "@Raphiiko",
+          },
+        },
       ],
       sidebar: [
         {
