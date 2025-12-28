@@ -1,72 +1,37 @@
 ---
 title: Supported Devices
 sidebar:
-#@formatter:off
+  #@formatter:off
   order: 10
 #@formatter:on
 ---
 
 import { Badge } from "@astrojs/starlight/components";
-
-## VR Hardware
-
-- VR-only features only support SteamVR. Alternative runtimes are unsupported.
-- VRTI only supports the PC version of VRChat: Standalone headsets are unsupported, unless used in PCVR mode.
+import TreadmillCompatibilityList from "../../../../components/vrti/TreadmillCompatibilityList.astro";
+import BluetoothAdapterTable from "../../../../components/vrti/BluetoothAdapterTable";
 
 ## Treadmills
 
-Here you'll find a list of treadmill models that are known to work with VRTI.
-
-Be sure to select the recommended driver for your treadmill model in VRTI's settings.
+Here you'll find a list of treadmill models that have been tested by our community and are known to work with VRTI.
+This list is maintained [here](https://github.com/Duinrahaic/treadmill-compatibility).
 
 Note that if you have a Bluetooth-enabled treadmill that is not listed here, it could still work with VRTI!
-If you have one, please try connecting your treadmill with any of the available driver options, and let me know if it works so I can add it to this list!
+If you have one, please try connecting your treadmill with any of the available driver options, and let me know if it works so I can add it to this list.
 
-### Dynamax
+If your treadmill is listed here, be sure to select the recommended driver for your treadmill model in VRTI's settings.
 
-For these models, use the <Badge text="KingSmith WalkingPad Driver" variant="tip" />
-
-- Dynamax RunningPad (DYCV-10221) <Badge text="Tested" variant="success" />
-
-### KingSmith
-
-#### WalkingPad
-
-For these models, use the <Badge text="KingSmith WalkingPad Driver" variant="tip" />
-
-- KingSmith WalkingPad P1 <Badge text="Tested" variant="success" />
-- KingSmith WalkingPad R1 PRO<span class="text-white">\*</span> <Badge text="Tested" variant="success" />
-- KingSmith WalkingPad A1 PRO <Badge text="Tested" variant="success" />
-
-For these models, use the <Badge text="Generic Bluetooth (FTMS) Driver" variant="tip" />
-
-- KingSmith WalkingPad Z1 <Badge text="Tested" variant="success" />
-
-<span class="text-white">*</span> The R1 Pro is limited to 6km/h when the bar is
-not extended. If you set your maximum speed above 6km/h, you need to make sure
-you extend the bar for VRTI to function properly.
-
-### UREVO
-
-For these models, use the <Badge text="Generic Bluetooth (FTMS) Driver" variant="tip" />
-
-- UREVO Strol 2E (URTM030) <Badge text="Tested" variant="success" /> <Badge text="No step counting" variant="caution" />
-
-### XTERRA
-
-For these models, use the <Badge text="Generic Bluetooth (FTMS) Driver" variant="tip" />
-
-- XTERRA TRX4500 <Badge text="Tested" variant="success" />
+<TreadmillCompatibilityList />
 
 ## Bluetooth Adapters
 
 Many Bluetooth adapters will work with VRTI, but you'll find a list here of the ones that have been tested and confirmed to work with VRTI.
 If your adapter isn't listed here, there's a good chance it will still work: Generally it just needs to support Bluetooth Low Energy (BLE).
 
-- TP-Link UB500 Plus <Badge text="Recommended" variant="success" />
-- TP-Link UB500
-- Intel AX200
-- ASUS USB-BT500
-- MediaTek MT7922
+<BluetoothAdapterTable client:visible />
 
 As with the treadmills: if you have a model that is not listed here, please let me know if it works with VRTI so I can add it to the list!
+
+## VR Hardware
+
+- VR-only features only support SteamVR. Alternative runtimes are unsupported.
+- VRTI only supports the PC version of VRChat: Standalone headsets are unsupported, unless used in PCVR mode.

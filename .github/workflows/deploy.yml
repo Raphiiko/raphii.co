@@ -2,8 +2,10 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
+  repository_dispatch:
+    types: [treadmill-update]
 
 permissions:
   contents: read

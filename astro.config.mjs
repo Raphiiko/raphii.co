@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import tailwind from "@astrojs/tailwind";
+import react from "@astrojs/react";
 import starlightUtils from "@lorenzo_lewis/starlight-utils";
 
 // https://astro.build/config
@@ -95,6 +96,7 @@ export default defineConfig({
               autogenerate: { directory: "vrti/Getting Started" },
             },
             { label: "Help", autogenerate: { directory: "vrti/Help" } },
+            { label: "Community", slug: "vrti/community" },
             { label: "Pricing", slug: "vrti/pricing" },
             {
               label: "Developer",
@@ -124,5 +126,6 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
+    react(),
   ],
 });

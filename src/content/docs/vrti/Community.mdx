@@ -1,0 +1,37 @@
+---
+title: Walkies?
+description: Join the Walkies community.
+tableOfContents: false
+---
+
+import poster from "../../../assets/vrti/walkies_poster.png";
+import "./Community.scss";
+import { Aside } from "@astrojs/starlight/components";
+
+<div class="grid md:grid-cols-2 gap-16 items-center not-content main-frame">
+  <div class="flex justify-center">
+    <img src={poster.src} alt="Walkies Community Poster" class="rounded-lg shadow-lg community-poster" />
+  </div>
+  <div>
+    <h1 class="text-4xl font-bold mb-4 !mt-0">Walkies?</h1>
+    <p class="text-lg mb-6 text-gray-300">
+      Join our vibrant community of virtual walkers who use VRTI to stay active and connect with others in VRChat while exercising.
+    </p>
+
+    <h2 class="text-2xl font-semibold mb-3 mt-10">About the Community</h2>
+    <p class="mb-4 text-gray-300">
+      Our community brings together fitness enthusiasts from around the world who enjoy combining physical activity with social VR experiences. Whether you're walking on a treadmill or walking in circles, you'll find supportive members ready to join you on virtual adventures.
+    </p>
+
+    <h2 class="text-2xl font-semibold mb-3 mt-10">How to Join</h2>
+    <ul class="list-disc list-inside space-y-2 mb-6 text-gray-300">
+      <li>Join our VRChat group: <a href="https://vrchat.com/home/group/grp_cefd37c8-5f4b-4933-9346-75ab850329c9" target="_blank" class="text-accent hover:underline text-blue-400">Walkies.0659</a></li>
+      <li>Follow event announcements for scheduled group walks</li>
+    </ul>
+
+    <Aside type="tip" title="Getting Started">
+      New to the community? Check out the links in the VRChat Group and we can help you get started!
+    </Aside>
+
+  </div>
+</div>

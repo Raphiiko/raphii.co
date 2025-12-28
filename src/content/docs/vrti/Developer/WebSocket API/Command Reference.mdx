@@ -1,11 +1,12 @@
 ---
 title: Command Reference
 sidebar:
-#@formatter:off
+  #@formatter:off
   order: 20
 #@formatter:on
 ---
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 You can request VRTI to perform an action by sending it a command. Please see [Sending a command](/vrti/developer/websocket-api/using-the-api#sending-a-command) for more information on how to send commands.
 
@@ -18,20 +19,13 @@ Subscribes the client to the events specified in the payload.
 <Tabs>
   <TabItem label="Example Payload">
     {/*@formatter:off*/}
-    ```typescript
-    [
-      "TreadmillStateUpdated",
-      "AutoWalkSettingsUpdated",
-      "StatisticsUpdated"
-    ]
-    ```
+    ```typescript [ "TreadmillStateUpdated", "AutoWalkSettingsUpdated",
+    "StatisticsUpdated" ] ```
     {/*@formatter:on*/}
   </TabItem>
   <TabItem label="Payload Model">
     {/*@formatter:off*/}
-    ```typescript
-    EventName[]
-    ```
+    ```typescript EventName[] ```
     {/*@formatter:on*/}
   </TabItem>
 </Tabs>
@@ -45,24 +39,23 @@ Unsubscribes the client from the events specified in the payload.
 <Tabs>
   <TabItem label="Example Payload">
     {/*@formatter:off*/}
-    ```typescript
-    [
-      "AutoWalkSettingsUpdated",
-      "StatisticsUpdated"
-    ]
-    ```
+    ```typescript [ "AutoWalkSettingsUpdated", "StatisticsUpdated" ] ```
     {/*@formatter:on*/}
   </TabItem>
   <TabItem label="Payload Model">
     {/*@formatter:off*/}
-    ```typescript
-    string[]
-    ```
+    ```typescript string[] ```
     {/*@formatter:on*/}
   </TabItem>
 </Tabs>
 
 See the [Event Reference](/vrti/developer/websocket-api/event-reference) for a full list of available events you can subscribe to.
+
+### `GetTreadmillState`
+
+Requests the current state of the treadmill.
+
+Sends [`TreadmillStateUpdated`](/vrti/developer/websocket-api/event-reference/#treadmillstateupdated) as a response.
 
 ### `SetTargetSpeed`
 
@@ -76,16 +69,12 @@ If the provided value is 0 or below, the treadmill will be stopped.
 <Tabs>
   <TabItem label="Example Payload">
     {/*@formatter:off*/}
-    ```typescript
-    2.5 // The target speed in km/h
-    ```
+    ```typescript 2.5 // The target speed in km/h ```
     {/*@formatter:on*/}
   </TabItem>
   <TabItem label="Payload Model">
     {/*@formatter:off*/}
-    ```typescript
-    number
-    ```
+    ```typescript number ```
     {/*@formatter:on*/}
   </TabItem>
 </Tabs>
@@ -103,21 +92,23 @@ If the new maximum speed is below the current target speed, the target speed ada
 <Tabs>
   <TabItem label="Example Payload">
     {/*@formatter:off*/}
-    ```typescript
-    6.0 // The maximum speed in km/h
-    ```
+    ```typescript 6.0 // The maximum speed in km/h ```
     {/*@formatter:on*/}
   </TabItem>
   <TabItem label="Payload Model">
     {/*@formatter:off*/}
-    ```typescript
-    number
-    ```
+    ```typescript number ```
     {/*@formatter:on*/}
   </TabItem>
 </Tabs>
 
 Sends [`TreadmillStateUpdated`](/vrti/developer/websocket-api/event-reference/#treadmillstateupdated) as a response.
+
+### `GetAutoWalkSettings`
+
+Requests the current auto walk settings.
+
+Sends [`AutoWalkSettingsUpdated`](/vrti/developer/websocket-api/event-reference/#autowalksettingsupdated) as a response.
 
 ### `ToggleAutoWalk`
 
@@ -129,41 +120,82 @@ The feature will be toggled if no payload is provided.
 <Tabs>
   <TabItem label="Example Payload">
     {/*@formatter:off*/}
-    ```typescript
-    true
-    ```
+    ```typescript true ```
     {/*@formatter:on*/}
   </TabItem>
   <TabItem label="Payload Model">
     {/*@formatter:off*/}
-    ```typescript
-    boolean?
-    ```
+    ```typescript boolean? ```
     {/*@formatter:on*/}
   </TabItem>
 </Tabs>
 
 Sends [`AutoWalkSettingsUpdated`](/vrti/developer/websocket-api/event-reference/#autowalksettingsupdated) as a response.
 
-### `SetAutoWalkSpeed`
+### `SetAutoWalkSpeedMultiplier`
 
-Sets the auto walk speed. The value acts as a multiplier, with `1.0` being the default.
+Sets the auto walk speed multiplier. This multiplier is applied to the base speed calculated from the treadmill's current speed and max speed.
 
 The provided value will automatically be limited to the range of `0.0` to `2.0`.
 
 <Tabs>
   <TabItem label="Example Payload">
     {/*@formatter:off*/}
-    ```typescript
-    0.5 // The multiplier value, ranged 0.0 to 2.0
-    ```
+    ```typescript 0.5 // The multiplier value, ranged 0.0 to 2.0 ```
     {/*@formatter:on*/}
   </TabItem>
   <TabItem label="Payload Model">
     {/*@formatter:off*/}
-    ```typescript
-    number
-    ```
+    ```typescript number ```
+    {/*@formatter:on*/}
+  </TabItem>
+</Tabs>
+
+Sends [`AutoWalkSettingsUpdated`](/vrti/developer/websocket-api/event-reference/#autowalksettingsupdated) as a response.
+
+### `SetAutoWalkSpeedOffset`
+
+Sets a temporary offset that is added to the calculated auto walk speed.
+This is useful for temporarily speeding up or slowing down in-game movement without changing the auto walk multiplier, override, or treadmill speed (For example, to quickly catch up with other players).
+
+The offset is additive and is applied after the speed calculation, so a value of `0.25` will increase the final speed by 0.25, while `-0.25` will decrease it by 0.25.
+
+The provided value will automatically be limited to the range of `-1.0` to `1.0`.
+
+<Tabs>
+  <TabItem label="Example Payload">
+    {/*@formatter:off*/}
+    ```typescript 0.25 // Temporarily increase speed by 0.25 ```
+    {/*@formatter:on*/}
+  </TabItem>
+  <TabItem label="Payload Model">
+    {/*@formatter:off*/}
+    ```typescript number // Range: -1.0 to 1.0 ```
+    {/*@formatter:on*/}
+  </TabItem>
+</Tabs>
+
+Sends [`AutoWalkSettingsUpdated`](/vrti/developer/websocket-api/event-reference/#autowalksettingsupdated) as a response.
+
+### `SetAutoWalkSpeedOverride`
+
+Sets a speed override for the auto walk feature. This is useful for always walking in-game at a fixed speed regardless of treadmill movement.
+
+When set, this overrides the normal speed calculation based on treadmill speed and multiplier.
+Provide a value between `0.0` and `1.0` where `1.0` represents maximum walking speed, or `null` to disable the override and return to normal calculation.
+
+Note that the auto walk speed offset (set via [`SetAutoWalkSpeedOffset`](#setautowalkspeedoffset)) is still applied on top of the override speed if one is set.
+
+<Tabs>
+  <TabItem label="Example Payload">
+    {/*@formatter:off*/}
+    ```typescript 0.5 // Override speed to 50% of maximum // or null // Disable
+    speed override ```
+    {/*@formatter:on*/}
+  </TabItem>
+  <TabItem label="Payload Model">
+    {/*@formatter:off*/}
+    ```typescript number | null // Range: 0.0 to 1.0, or null to disable ```
     {/*@formatter:on*/}
   </TabItem>
 </Tabs>
@@ -180,16 +212,12 @@ The feature will be toggled if no payload is provided.
 <Tabs>
   <TabItem label="Example Payload">
     {/*@formatter:off*/}
-    ```typescript
-    true
-    ```
+    ```typescript true ```
     {/*@formatter:on*/}
   </TabItem>
   <TabItem label="Payload Model">
     {/*@formatter:off*/}
-    ```typescript
-    boolean?
-    ```
+    ```typescript boolean? ```
     {/*@formatter:on*/}
   </TabItem>
 </Tabs>
@@ -202,26 +230,138 @@ Resets the yaw lock to the current direction the user is facing.
 
 This command is only available while the yaw lock feature is enabled, and the current rotation of the a VR headset is known.
 
-### `ResetStatistics`
+### `SetInputMode`
 
-Resets the treadmill statistics back to zero.
+Sets the input mode used for sending movement commands to the game.
 
-Sends [`StatisticsUpdated`](/vrti/developer/websocket-api/event-reference/#statisticsupdated) as a response.
+Available modes:
 
-### `GetTreadmillState`
+- `VRChatOSC`: Sends movement input via OSC to VRChat
+- `XInput`: Emulates an Xbox controller for movement input
 
-Requests the current state of the treadmill.
-
-Sends [`TreadmillStateUpdated`](/vrti/developer/websocket-api/event-reference/#treadmillstateupdated) as a response.
-
-### `GetAutoWalkSettings`
-
-Requests the current auto walk settings.
+<Tabs>
+  <TabItem label="Example Payload">
+    {/*@formatter:off*/}
+    ```typescript "VRChatOSC" // or "XInput" ```
+    {/*@formatter:on*/}
+  </TabItem>
+  <TabItem label="Payload Model">
+    {/*@formatter:off*/}
+    ```typescript "VRChatOSC" | "XInput" ```
+    {/*@formatter:on*/}
+  </TabItem>
+</Tabs>
 
 Sends [`AutoWalkSettingsUpdated`](/vrti/developer/websocket-api/event-reference/#autowalksettingsupdated) as a response.
 
 ### `GetStatistics`
 
-Requests the current treadmill statistics.
+Requests the treadmill statistics for the current session.
 
 Sends [`StatisticsUpdated`](/vrti/developer/websocket-api/event-reference/#statisticsupdated) as a response.
+
+This command will only return statistics for the current session. For requesting historic statistics, please refer to [the commands below](#gethistoricmonthlystats).
+
+### `ResetStatistics`
+
+Resets the treadmill statistics for the current session.
+
+Sends [`StatisticsUpdated`](/vrti/developer/websocket-api/event-reference/#statisticsupdated) as a response.
+
+This command does not affect historic statistics. Deleting your historic statistics can only be done via VRTI's interface, using the "reset" button while viewing your historic statistics.
+
+### `GetHistoricMonthlyStats`
+
+Requests historic monthly aggregated statistics within a specific date range.
+
+Sessions are included based on their start time (inclusive start, exclusive end).
+The response contains monthly statistics (aggregated by YYYY-MM) for all sessions within the specified time range.
+
+<Tabs>
+  <TabItem label="Example Payload">
+    {/*@formatter:off*/}
+    ```typescript
+    {
+      "startTime": 1704067200000, // Unix timestamp in milliseconds (2024-01-01 00:00:00)
+      "endTime": 1711929600000    // Unix timestamp in milliseconds (2024-04-01 00:00:00)
+    }
+    ```
+    {/*@formatter:on*/}
+  </TabItem>
+  <TabItem label="Payload Model">
+    {/*@formatter:off*/}
+    ```typescript
+    {
+      startTime: number,  // Unix timestamp in milliseconds (inclusive)
+      endTime: number     // Unix timestamp in milliseconds (exclusive)
+    }
+    ```
+    {/*@formatter:on*/}
+  </TabItem>
+</Tabs>
+
+Sends [`HistoricMonthlyStatsResult`](/vrti/developer/websocket-api/event-reference/#historicmonthlystatsresult) as a response.
+
+### `GetHistoricDailyStats`
+
+Requests historic daily aggregated statistics within a specific date range.
+
+Sessions are included based on their start time (inclusive start, exclusive end).
+The response contains daily statistics (aggregated by YYYY-MM-DD) for all sessions within the specified time range.
+
+<Tabs>
+  <TabItem label="Example Payload">
+    {/*@formatter:off*/}
+    ```typescript
+    {
+      "startTime": 1704067200000, // Unix timestamp in milliseconds (2024-01-01 00:00:00)
+      "endTime": 1704412800000    // Unix timestamp in milliseconds (2024-01-05 00:00:00)
+    }
+    ```
+    {/*@formatter:on*/}
+  </TabItem>
+  <TabItem label="Payload Model">
+    {/*@formatter:off*/}
+    ```typescript
+    {
+      startTime: number,  // Unix timestamp in milliseconds (inclusive)
+      endTime: number     // Unix timestamp in milliseconds (exclusive)
+    }
+    ```
+    {/*@formatter:on*/}
+  </TabItem>
+</Tabs>
+
+Sends [`HistoricDailyStatsResult`](/vrti/developer/websocket-api/event-reference/#historicdailystatsresult) as a response.
+
+### `GetHistoricSessions`
+
+Requests all historic sessions within a specific date range.
+
+Sessions are included based on their start time (inclusive start, exclusive end).
+The response contains all session details sorted by start time in ascending order.
+
+<Tabs>
+  <TabItem label="Example Payload">
+    {/*@formatter:off*/}
+    ```typescript
+    {
+      "startTime": 1704067200000, // Unix timestamp in milliseconds (2024-01-01 00:00:00)
+      "endTime": 1735689600000    // Unix timestamp in milliseconds (2025-01-01 00:00:00)
+    }
+    ```
+    {/*@formatter:on*/}
+  </TabItem>
+  <TabItem label="Payload Model">
+    {/*@formatter:off*/}
+    ```typescript
+    {
+      startTime: number,  // Unix timestamp in milliseconds (inclusive)
+      endTime: number     // Unix timestamp in milliseconds (exclusive)
+    }
+    ```
+    {/*@formatter:on*/}
+  </TabItem>
+</Tabs>
+
+Sends [`HistoricSessionsResult`](/vrti/developer/websocket-api/event-reference/#historicsessionsresult) as a response.
