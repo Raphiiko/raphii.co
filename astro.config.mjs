@@ -99,6 +99,11 @@ export default defineConfig({
             { label: "Community", slug: "vrti/community" },
             { label: "Pricing", slug: "vrti/pricing" },
             {
+              label: "Patch notes",
+              collapsed: true,
+              autogenerate: { directory: "vrti/Changelog" },
+            },
+            {
               label: "Developer",
               autogenerate: { directory: "vrti/Developer" },
             },
