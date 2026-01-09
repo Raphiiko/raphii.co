@@ -1,0 +1,87 @@
+---
+title: SteamVR Controller Bindings
+sidebar:
+  order: 60
+---
+
+import { Badge } from "@astrojs/starlight/components";
+import steamVrBindingsImage from "../../../../assets/vrti/steamvr_bindings.png";
+import AutoWalkOffsetDemo from "../../../../assets/vrti/autowalk_offset_demo.webm";
+import "./SteamVR Controller Bindings.scss";
+
+VRTI exposes most of its functions as SteamVR Input actions.
+This allows you to bind VRTI controls to any button on your VR controllers using the SteamVR Bindings UI.
+
+## Default Bindings
+
+By default, VRTI comes with the following bindings:
+
+- **Left Thumbstick Click:** Slow Down (Auto Walk, Hold)
+- **Right Thumbstick Click:** Speed Up (Auto Walk, Hold)
+
+<video
+  src={AutoWalkOffsetDemo}
+  autoplay
+  loop
+  muted
+  class="autowalk-video"
+></video>
+
+These bindings allow you to quickly adjust your walking speed in-game without changing the treadmill speed, say to catch up with friends!
+
+## Custom Bindings
+
+You can customize these bindings or add new ones through the SteamVR Dashboard.
+
+1. Open the SteamVR Dashboard.
+2. Go to **Controller Bindings**.
+3. Select **VRTI**.
+4. Change the bindings to your preference.
+
+<img
+  src={steamVrBindingsImage.src}
+  alt="SteamVR Bindings UI for VRTI"
+  class="w-full shadow-lg"
+/>
+
+## Available Actions
+
+The following actions are available for binding:
+
+### Auto Walk Control
+
+| Action                          | Description                                       |
+| :------------------------------ | :------------------------------------------------ |
+| **Speed Up (Auto Walk, Hold)**  | Temporarily increases auto-walk speed while held. |
+| **Slow Down (Auto Walk, Hold)** | Temporarily decreases auto-walk speed while held. |
+| **Auto Walk Enable**            | Enables auto-walk.                                |
+| **Auto Walk Disable**           | Disables auto-walk.                               |
+| **Auto Walk Toggle**            | Toggles auto-walk on/off.                         |
+
+### Treadmill Control
+
+| Action                  | Description                                          |
+| :---------------------- | :--------------------------------------------------- |
+| **Treadmill Start**     | Starts the treadmill.                                |
+| **Treadmill Stop**      | Stops the treadmill.                                 |
+| **Treadmill Toggle**    | Toggles the treadmill start/stop state.              |
+| **Treadmill Speed Up**  | Increases treadmill target speed by 0.5 km/h or m/h. |
+| **Treadmill Slow Down** | Decreases treadmill target speed by 0.5 km/h or m/h. |
+
+### Yaw Control
+
+| Action         | Description                                                   |
+| :------------- | :------------------------------------------------------------ |
+| **Center Yaw** | Resets the yaw lock to the direction you're currently facing. |
+
+### Speed Overrides
+
+These actions allow you to set a fixed speed override for auto-walk, ignoring the treadmill speed.
+
+| Action                             | Description                   |
+| :--------------------------------- | :---------------------------- |
+| **Auto Walk Speed Override: None** | Disables speed override.      |
+| **Auto Walk Speed Override: 25%**  | Sets auto-walk speed to 25%.  |
+| **Auto Walk Speed Override: 50%**  | Sets auto-walk speed to 50%.  |
+| **Auto Walk Speed Override: 75%**  | Sets auto-walk speed to 75%.  |
+| **Auto Walk Speed Override: 100%** | Sets auto-walk speed to 100%. |

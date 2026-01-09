@@ -10,7 +10,8 @@ import SpeedControlImage from "../../../../assets/vrti/speed_control.png";
 import AutoWalkControlImage from "../../../../assets/vrti/autowalk_control.png";
 import YawLockImage from "../../../../assets/vrti/yaw_lock.png";
 import ResetStatsImage from "../../../../assets/vrti/reset_stats.png";
-import SwitchUnitsImage from "../../../../assets/vrti/switch_units.png";
+import HistoryStatsImage from "../../../../assets/vrti/stats_history.png";
+import AutoWalkCalculator from "../../../../components/vrti/AutoWalkCalculator";
 
 :::tip
 To read about controlling your Treadmill from within VRChat, check out [VRChat & OSC Control](/vrti/getting-started/vrchat--osc-control)!
@@ -66,23 +67,38 @@ Limiting the maximum speed is a good way to prevent accidents. Start low, and on
   <img src={SpeedControlImage.src} alt="VRTI Controls" />
 </div>
 
-<div class="docs-image-row">
-  <div>
 ### Auto Walk
 
 The auto walk feature translates the movement of your treadmill into movement input for VRChat, or any other game that supports Xbox controller input.
 
+You can play a bit with the controls below to get an idea of how it works:
+
+<div>
+  <AutoWalkCalculator client:load />
+</div>
+
+<div class="docs-image-row">
+  <div>
 #### Auto Walk Toggle
 
 With this button you can toggle the auto walk feature on and off. Movement input will only be sent to the game when the feature is enabled.
 
+| Click Type            | Action                                                  |
+| --------------------- | ------------------------------------------------------- |
+| **Left Click**        | Toggle auto walk on/off                                 |
+| **Shift/Right Click** | Enable speed overrides presets (25%, 50%, 75%, or 100%) |
+
+##### Presets
+
+When a preset is enabled, the auto walk speed won't be affected by the speed of your treadmill, and instead use a fixed value (25%, 50%, 75% or 100% of the max in-game speed).
+
 #### Auto Walk Adjustment
 
-By default, the speed at which you walk in-game is determined by the speed of your treadmill, relative to the maximum speed.
+By default, the speed at which you walk in-game is directly proportional to the speed of your treadmill.
 
 To give an example, if you are walking at 3 km/h, and have your maximum speed set to 6 km/h, you will walk at half speed in-game.
 
-This slider allows you to adjust the speed you are walking in-game, without altering the speed of your treadmill.
+This slider allows you to adjust the speed you are walking in-game without altering the speed of your treadmill.
 This can be useful to calibrate the speed which you are walking at in-game, or to match your speed with other people walking alongside you, without having to change your actual pace.
 
 #### Input Mode
@@ -113,19 +129,21 @@ The specific direction you're walking in is determined by the direction you're f
 
 <div class="docs-image-row">
   <div>
-### Switch Units
+### Historic Statistics
 
-This button toggles between metric and imperial units for the speed and distance displays on the VRTI interface.
+This button opens the view for viewing your historic walking statistics, such as distance walked over time! Press it again to switch back to the main view.
 
   </div>
-  <img src={SwitchUnitsImage.src} alt="VRTI Controls" />
+  <img src={HistoryStatsImage.src} alt="VRTI Controls" />
 </div>
 
 <div class="docs-image-row">
   <div>
 ### Reset Stats
 
-This button resets the statistics displayed on the VRTI interface, such as the distance you've walked, and steps you've taken.
+This button resets the statistics displayed on the VRTI interface, such as the distance you've walked, steps you've taken, and time spent walking.
+
+If you press this while viewing your historic statistics, VRTI will offer to reset your entire history. On the main view, it will only reset the current session statistics.
 
   </div>
   <img src={ResetStatsImage.src} alt="VRTI Controls" />

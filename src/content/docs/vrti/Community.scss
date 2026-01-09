@@ -1,0 +1,21 @@
+:root {
+  --sl-content-width: 100% !important;
+}
+
+/* Hide the default page title as we are including it in the layout */
+main h1#_top {
+  display: none;
+}
+
+.main-frame {
+  max-width: 1600px !important;
+  margin: 0 auto;
+}
+
+.community-poster {
+  max-height: 70vh !important;
+  width: auto !important;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}

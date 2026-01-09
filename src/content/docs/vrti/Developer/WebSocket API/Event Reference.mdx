@@ -1,7 +1,7 @@
 ---
 title: Event Reference
 sidebar:
-#@formatter:off
+  #@formatter:off
   order: 30
 #@formatter:on
 ---
@@ -40,9 +40,21 @@ Emitted when the auto walk settings change.
 ```json title="Event Payload"
 {
   "enabled": boolean, // Whether the auto walk feature is enabled
-  "speed": number, // The current speed multiplier of the auto walk feature
+  "speedMultiplier": number, // The current speed multiplier of the auto walk feature
   "inputMode": 'VRChatOSC' | 'XInput', // The mode of input used by the auto walk feature
-  "yawLock": boolean // Whether the yaw lock is active
+  "yawLock": boolean, // Whether the yaw lock is active
+  "speedOverride": number | null, // Speed override value (0.0-1.0), or null if disabled
+  "speedOffset": number // Temporary speed offset (-1.0 to 1.0)
+}
+```
+
+### `AutoWalkSpeedUpdated`
+
+Emitted when the auto walk speed sent to the game changes.
+
+```json title="Event Payload"
+{
+  "speed": number // The final calculated auto walk speed (0.0-1.0) being sent to the game
 }
 ```
 
@@ -52,13 +64,72 @@ Emitted when the yaw lock is centered.
 
 ### `StatisticsUpdated`
 
-Emitted when the currently tracked statistics change.
+Emitted when the currently tracked statistics for the active session change.
 
 ```json title="Event Payload"
 {
-  "steps": 0, // The number of steps taken
-  "distance": 0 // The distance covered in kilometers
+  "steps": number, // The number of steps taken in the current session
+  "distance": number, // The distance covered in kilometers in the current session
+  "time": number // The active walking time in seconds in the current session
 }
 ```
 
+### `HistoricMonthlyStatsResult`
 
+Emitted in response to the [`GetHistoricMonthlyStats`](/vrti/developer/websocket-api/command-reference/#gethistoricmonthlystats) command.
+
+Contains monthly aggregated statistics for the requested date range.
+
+```json title="Event Payload"
+{
+  "stats": [
+    {
+      "month": string, // Month in YYYY-MM format (e.g., "2024-01")
+      "activeTimeMs": number, // Total active walking time for the month in milliseconds
+      "steps": number, // Total steps taken in the month
+      "distance": number // Total distance walked in the month in meters
+    }
+  ]
+}
+```
+
+### `HistoricDailyStatsResult`
+
+Emitted in response to the [`GetHistoricDailyStats`](/vrti/developer/websocket-api/command-reference/#gethistoricdailystats) command.
+
+Contains daily aggregated statistics for the requested date range.
+
+```json title="Event Payload"
+{
+  "stats": [
+    {
+      "date": string, // Date in YYYY-MM-DD format (e.g., "2024-01-15")
+      "activeTimeMs": number, // Total active walking time for the day in milliseconds
+      "steps": number, // Total steps taken on the day
+      "distance": number // Total distance walked on the day in meters
+    }
+  ]
+}
+```
+
+### `HistoricSessionsResult`
+
+Emitted in response to the [`GetHistoricSessions`](/vrti/developer/websocket-api/command-reference/#gethistoricsessions) command.
+
+Contains all historic sessions for the requested date range, sorted by start time.
+
+```json title="Event Payload"
+{
+  "sessions": [
+    {
+      "id": string, // Unique session identifier (UUID)
+      "date": string, // Session start date in local timezone (YYYY-MM-DD format)
+      "startTime": number, // Session start timestamp (Unix milliseconds)
+      "endTime": number, // Session end timestamp (Unix milliseconds)
+      "activeTimeMs": number, // Total active walking time in milliseconds
+      "distance": number, // Total distance walked in meters
+      "steps": number // Total steps taken
+    }
+  ]
+}
+```

@@ -2,11 +2,15 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import tailwind from "@astrojs/tailwind";
+import react from "@astrojs/react";
 import starlightUtils from "@lorenzo_lewis/starlight-utils";
+
+import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://raphii.co",
+
   integrations: [
     starlight({
       title: ">raphii",
@@ -95,7 +99,13 @@ export default defineConfig({
               autogenerate: { directory: "vrti/Getting Started" },
             },
             { label: "Help", autogenerate: { directory: "vrti/Help" } },
+            { label: "Community", slug: "vrti/community" },
             { label: "Pricing", slug: "vrti/pricing" },
+            {
+              label: "Patch notes",
+              collapsed: true,
+              autogenerate: { directory: "vrti/Changelog" },
+            },
             {
               label: "Developer",
               autogenerate: { directory: "vrti/Developer" },
@@ -124,5 +134,9 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
+    react(),
   ],
+
+  output: "server",
+  adapter: cloudflare(),
 });
