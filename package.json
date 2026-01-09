@@ -3,12 +3,14 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "node scripts/generate-releases.js && astro dev",
-    "start": "node scripts/generate-releases.js && astro dev",
-    "build": "node scripts/generate-releases.js && astro build && echo _worker.js > dist/.assetsignore",
+    "postinstall": "npm run codegen",
+    "dev": "astro dev",
+    "start": "npm run dev",
     "check": "astro check",
-    "deploy": "npm run build && echo _worker.js > dist/.assetsignore && wrangler deploy",
+    "codegen": "node scripts/generate-releases.js",
+    "build": "npm run codegen && astro build && echo _worker.js > dist/.assetsignore",
     "preview": "astro preview",
+    "deploy": "npm run build && wrangler deploy",
     "astro": "astro"
   },
   "dependencies": {

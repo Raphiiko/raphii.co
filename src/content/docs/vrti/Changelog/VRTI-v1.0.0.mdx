@@ -1,0 +1,44 @@
+---
+title: "VRTI v1.0"
+description: Release notes for v1.0.0
+sidebar:
+  label: "v1.0.0"
+  order: 0
+---
+
+## v1.0.0
+
+### Added
+
+- Historic statistics tracking
+  - Track over time how far you've walked, steps you've taken, and for how long!
+  - Strava integration: synchronize your sessions to Strava!
+- Auto walk speed visualization within auto walk slider
+  - This visualizes what walking speed VRTI is sending to your game
+- Autowalk speed override presets:
+  - Select a specific speed to walk at in-game. Useful when walking with friends! (25%, 50%, 75%, 100%).
+- Autowalk speed up / slow down:
+  - Use this to quickly catch up with friends, by temporarily speeding up or slowing down
+  - SteamVR Input bindings available, simply hold down a button on your controller to speed up or slow down
+  - Available over OSC as well: add the buttons to your avatar menu
+- Active walk time tracking
+- SteamVR Input bindings for various VRTI functions
+- New web socket events for:
+  - Changes to the current auto walk speed
+  - Fetching historic sessions and aggregated records
+  - Switching between input modes (VRChat OSC and XInput)
+- New MCP server to give AI assistants access to VRTI's features
+- Introduction wizard for first-time users
+
+### Changed
+
+- Randomized cat kaomoji at startup
+- Moved unit setting to settings view
+- Included active walk time in websocket event for getting statistics
+
+### Fixed
+
+- Statistics not being properly persisted when resetting stats
+- Distance display not updating immediately when switching between metric and imperial units
+
+---
