@@ -5,9 +5,12 @@ import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import starlightUtils from "@lorenzo_lewis/starlight-utils";
 
+import cloudflare from "@astrojs/cloudflare";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://raphii.co",
+
   integrations: [
     starlight({
       title: ">raphii",
@@ -133,4 +136,7 @@ export default defineConfig({
     }),
     react(),
   ],
+
+  output: "server",
+  adapter: cloudflare(),
 });
