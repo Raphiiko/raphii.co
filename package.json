@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node scripts/generate-releases.js && astro dev",
     "start": "node scripts/generate-releases.js && astro dev",
-    "build": "node scripts/generate-releases.js && astro build",
+    "build": "node scripts/generate-releases.js && astro build && echo _worker.js > dist/.assetsignore",
     "check": "astro check",
     "deploy": "npm run build && echo _worker.js > dist/.assetsignore && wrangler deploy",
     "preview": "astro preview",
