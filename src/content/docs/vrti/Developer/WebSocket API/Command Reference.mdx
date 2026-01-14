@@ -19,12 +19,16 @@ Subscribes the client to the events specified in the payload.
 <Tabs>
   <TabItem label="Example Payload">
     {/*@formatter:off*/}
-    ```typescript [ "TreadmillStateUpdated", "AutoWalkSettingsUpdated", "StatisticsUpdated" ] ```
+    ```typescript
+    [ "TreadmillStateUpdated", "AutoWalkSettingsUpdated", "StatisticsUpdated" ]
+    ```
     {/*@formatter:on*/}
   </TabItem>
   <TabItem label="Payload Model">
     {/*@formatter:off*/}
-    ```typescript EventName[] ```
+    ```typescript
+    EventName[]
+    ```
     {/*@formatter:on*/}
   </TabItem>
 </Tabs>
@@ -38,12 +42,16 @@ Unsubscribes the client from the events specified in the payload.
 <Tabs>
   <TabItem label="Example Payload">
     {/*@formatter:off*/}
-    ```typescript [ "AutoWalkSettingsUpdated", "StatisticsUpdated" ] ```
+    ```typescript
+    [ "AutoWalkSettingsUpdated", "StatisticsUpdated" ]
+    ```
     {/*@formatter:on*/}
   </TabItem>
   <TabItem label="Payload Model">
     {/*@formatter:off*/}
-    ```typescript string[] ```
+    ```typescript
+    string[]
+    ```
     {/*@formatter:on*/}
   </TabItem>
 </Tabs>
@@ -68,12 +76,16 @@ If the provided value is 0 or below, the treadmill will be stopped.
 <Tabs>
   <TabItem label="Example Payload">
     {/*@formatter:off*/}
-    ```typescript 2.5 // The target speed in km/h ```
+    ```typescript
+    2.5 // The target speed in km/h
+    ```
     {/*@formatter:on*/}
   </TabItem>
   <TabItem label="Payload Model">
     {/*@formatter:off*/}
-    ```typescript number ```
+    ```typescript
+    number
+    ```
     {/*@formatter:on*/}
   </TabItem>
 </Tabs>
@@ -91,12 +103,16 @@ If the new maximum speed is below the current target speed, the target speed ada
 <Tabs>
   <TabItem label="Example Payload">
     {/*@formatter:off*/}
-    ```typescript 6.0 // The maximum speed in km/h ```
+    ```typescript
+    6.0 // The maximum speed in km/h
+    ```
     {/*@formatter:on*/}
   </TabItem>
   <TabItem label="Payload Model">
     {/*@formatter:off*/}
-    ```typescript number ```
+    ```typescript
+    number
+    ```
     {/*@formatter:on*/}
   </TabItem>
 </Tabs>
@@ -119,12 +135,16 @@ The feature will be toggled if no payload is provided.
 <Tabs>
   <TabItem label="Example Payload">
     {/*@formatter:off*/}
-    ```typescript true ```
+    ```typescript
+    true
+    ```
     {/*@formatter:on*/}
   </TabItem>
   <TabItem label="Payload Model">
     {/*@formatter:off*/}
-    ```typescript boolean? ```
+    ```typescript
+    boolean?
+    ```
     {/*@formatter:on*/}
   </TabItem>
 </Tabs>
@@ -140,12 +160,16 @@ The provided value will automatically be limited to the range of `0.0` to `2.0`.
 <Tabs>
   <TabItem label="Example Payload">
     {/*@formatter:off*/}
-    ```typescript 0.5 // The multiplier value, ranged 0.0 to 2.0 ```
+    ```typescript
+    0.5 // The multiplier value, ranged 0.0 to 2.0
+    ```
     {/*@formatter:on*/}
   </TabItem>
   <TabItem label="Payload Model">
     {/*@formatter:off*/}
-    ```typescript number ```
+    ```typescript
+    number
+    ```
     {/*@formatter:on*/}
   </TabItem>
 </Tabs>
@@ -164,12 +188,16 @@ The provided value will automatically be limited to the range of `-1.0` to `1.0`
 <Tabs>
   <TabItem label="Example Payload">
     {/*@formatter:off*/}
-    ```typescript 0.25 // Temporarily increase speed by 0.25 ```
+    ```typescript
+    0.25 // Temporarily increase speed by 0.25
+    ```
     {/*@formatter:on*/}
   </TabItem>
   <TabItem label="Payload Model">
     {/*@formatter:off*/}
-    ```typescript number // Range: -1.0 to 1.0 ```
+    ```typescript
+    number // Range: -1.0 to 1.0
+    ```
     {/*@formatter:on*/}
   </TabItem>
 </Tabs>
@@ -188,13 +216,18 @@ Note that the auto walk speed offset (set via [`SetAutoWalkSpeedOffset`](#setaut
 <Tabs>
   <TabItem label="Example Payload">
     {/*@formatter:off*/}
-    ```typescript 0.5 // Override speed to 50% of maximum // or null // Disable
-    speed override ```
+    ```typescript
+    0.5 // Override speed to 50% of maximum
+    // or
+    null // Disable speed override
+    ```
     {/*@formatter:on*/}
   </TabItem>
   <TabItem label="Payload Model">
     {/*@formatter:off*/}
-    ```typescript number | null // Range: 0.0 to 1.0, or null to disable ```
+    ```typescript
+    number | null // Range: 0.0 to 1.0, or null to disable
+    ```
     {/*@formatter:on*/}
   </TabItem>
 </Tabs>
@@ -211,12 +244,16 @@ The feature will be toggled if no payload is provided.
 <Tabs>
   <TabItem label="Example Payload">
     {/*@formatter:off*/}
-    ```typescript true ```
+    ```typescript
+    true
+    ```
     {/*@formatter:on*/}
   </TabItem>
   <TabItem label="Payload Model">
     {/*@formatter:off*/}
-    ```typescript boolean? ```
+    ```typescript
+    boolean?
+    ```
     {/*@formatter:on*/}
   </TabItem>
 </Tabs>
@@ -241,12 +278,18 @@ Available modes:
 <Tabs>
   <TabItem label="Example Payload">
     {/*@formatter:off*/}
-    ```typescript "VRChatOSC" // or "XInput" ```
+    ```typescript
+    "VRChatOSC"
+    // or
+    "XInput"
+    ```
     {/*@formatter:on*/}
   </TabItem>
   <TabItem label="Payload Model">
     {/*@formatter:off*/}
-    ```typescript "VRChatOSC" | "XInput" ```
+    ```typescript
+    "VRChatOSC" | "XInput"
+    ```
     {/*@formatter:on*/}
   </TabItem>
 </Tabs>
