@@ -16,6 +16,7 @@ If you treadmill is not connecting to VRTI, please ensure that:
 - The [correct driver](/vrti/getting-started/connecting-your-treadmill) for your treadmill is selected in the settings
   menu.
 - Your treadmill is within Bluetooth range of your PC.
+- Your treadmill is not currently connected to another device (e.g. your phone).
 - If your motherboard has built-in bluetooth: 
   - Check if the external antenna is hooked up: Using built-in bluetooth without an external antenna is often insufficient.
   - Try using one of the [recommended](/vrti/help/supported-devices) Bluetooth USB dongles: Even on high-end motherboards, the built-in bluetooth adapter is sometimes still problematic.
