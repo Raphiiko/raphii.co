@@ -38,6 +38,8 @@ hero:
 import oyasumiVrImg from "../../assets/oyasumivr_icon.png";
 import freckleImg from "../../assets/freckle_icon.svg";
 import vrtiImg from "../../assets/vrti_icon.png";
+import sddbImg from "../../assets/sddb_logo.png";
+import elgatoImg from "../../assets/elgato_logo.jpg";
 import { CardGrid, LinkButton } from "@astrojs/starlight/components";
 import "./index.scss";
 
@@ -84,8 +86,8 @@ import "./index.scss";
       <div className="flex flex-row items-start w-full">
         <div class="!mt-0 flex-1">
           <h4>
-            VRTI{" "}
-            <span class="text-gray-500 text-lg">(VR Treadmill Interface)</span>
+            VRTI<br/>
+            <span class="text-gray-500 text-lg">VR Treadmill Interface</span>
           </h4>
           <p>
             Use your bluetooth-controlled treadmill in VR. VRTI automatically
@@ -121,6 +123,68 @@ import "./index.scss";
 ## Other Projects
 
 <CardGrid>
+<article class="card">
+    <div class="w-full flex flex-col h-full">
+      <div className="flex flex-row items-start w-full">
+        <div class="!mt-0 flex-1">
+          <h4>
+            Display Brightness<br/>
+            <span class="text-gray-500 text-lg">Plugin for Stream Deck</span>
+          </h4>
+          <p>
+            Plugin for the Elgato Stream Deck software, enabling you to change
+            the brightness of external displays via DDC/CI. Control your display 
+            brightness directly from your Stream Deck with customizable buttons.
+          </p>
+        </div>
+        <div class="!mt-0">
+          <img src={sddbImg.src} alt="Display Brightness Icon" class="w-20 ml-6" />
+        </div>
+      </div>
+      <div class="flex-1 flex flex-row items-end justify-start flex-wrap">
+        <LinkButton
+          href="https://github.com/Raphiiko/streamdeck-display-brightness"
+          variant="secondary"
+          icon="external"
+        >
+          GitHub Repository
+        </LinkButton>
+      </div>
+    </div>
+  </article>
+  <article class="card">
+    <div class="w-full flex flex-col h-full">
+      <div className="flex flex-row items-start w-full">
+        <div class="!mt-0 flex-1">
+          <h4>Wave Link 3.0 Utilities</h4>
+          <p>
+            A command-line interface and TypeScript library for controlling
+            Elgato Wave Link 3.0 virtual audio mixer. Easily manage your 
+            Wave Link audio settings from code or the terminal.
+          </p>
+        </div>
+        <div class="!mt-0">
+          <img src={elgatoImg.src} alt="Elgato Icon" class="w-20 ml-6" />
+        </div>
+      </div>
+      <div class="flex-1 flex flex-row items-end justify-start flex-wrap">
+        <LinkButton
+          href="https://www.npmjs.com/package/@raphiiko/wavelink-ts"
+          variant="secondary"
+          icon="external"
+        >
+          wavelink-ts (npm)
+        </LinkButton>
+        <LinkButton
+          href="https://www.npmjs.com/package/@raphiiko/wavelink-cli"
+          variant="secondary"
+          icon="external"
+        >
+          wavelink-cli (npm)
+        </LinkButton>
+      </div>
+    </div>
+  </article>
   <article class="card">
     <div class="w-full flex flex-col h-full">
       <div className="flex flex-row items-start w-full">
@@ -170,4 +234,5 @@ import "./index.scss";
       </div>
     </div>
   </article>
+  
 </CardGrid>
