@@ -6,6 +6,7 @@ import {
   Filter,
   X,
   ChevronDown,
+  Star,
 } from "lucide-react";
 
 interface Treadmill {
@@ -45,6 +46,18 @@ const getDriverDisplayName = (driver: string) => {
     default:
       return driver;
   }
+};
+
+// Developer's personal treadmill choice
+const DEVELOPER_CHOICE = {
+  make: "KingSmith",
+  model: "WalkingPad P1",
+};
+
+const isDeveloperChoice = (item: Treadmill) => {
+  return (
+    item.make === DEVELOPER_CHOICE.make && item.model === DEVELOPER_CHOICE.model
+  );
 };
 
 const Badge = ({
@@ -389,7 +402,17 @@ export default function TreadmillTable({ data }: TreadmillTableProps) {
                         }
                       >
                         <td className="p-4 font-medium text-slate-200">
-                          {item.make}
+                          <div className="flex items-center gap-2">
+                            {item.make}
+                            {isDeveloperChoice(item) && (
+                              <span
+                                title="The treadmill model used by the developer"
+                                className="inline-flex items-center justify-center text-amber-400"
+                              >
+                                <Star className="w-3 h-3 fill-current" />
+                              </span>
+                            )}
+                          </div>
                         </td>
                         <td className="p-4 text-slate-300 group-hover:text-slate-100 transition-colors">
                           {item.model}
@@ -440,6 +463,22 @@ export default function TreadmillTable({ data }: TreadmillTableProps) {
                         <tr className="bg-slate-800/30 border-b border-slate-800/50 animate-in fade-in duration-200">
                           <td colSpan={5} className="px-4 pb-4 pt-0">
                             <div className="ml-4 pl-4 border-l border-blue-500/30 py-2 flex flex-col gap-4">
+                              {/* Developer's Choice Note */}
+                              {isDeveloperChoice(item) && (
+                                <div className="flex items-start gap-2 p-3 bg-gradient-to-r from-amber-950/30 to-orange-950/20 border border-amber-900/30 rounded-lg">
+                                  <Star className="w-4 h-4 text-amber-400 fill-current flex-shrink-0 mt-0.5" />
+                                  <div>
+                                    <h4 className="font-semibold text-amber-400 text-sm">
+                                      Developer's Choice
+                                    </h4>
+                                    <p className="text-slate-400 text-sm mt-1">
+                                      This is the treadmill that Raphii (the
+                                      developer of VRTI) personally uses.
+                                    </p>
+                                  </div>
+                                </div>
+                              )}
+
                               {/* Notes Section */}
                               {item.sharedNotes.length > 0 && (
                                 <div>
