@@ -1,0 +1,60 @@
+---
+title: Privacy Policy
+sidebar:
+  order: 25
+---
+
+This privacy policy explains how VRTI collects, uses, and protects your data.
+
+### Analytics
+
+VRTI collects basic anonymous usage information to help improve the software.
+This data does not contain any personal information. It's completely anonymous, is not shared with third parties, and is only used for internal purposes.
+
+The data collected is processed by [Aptabase](https://aptabase.com/), and stored within the European Union.
+Please see their [privacy policy](https://aptabase.com/legal/privacy) for more information.
+All analytics collected by VRTI are stored by Aptabase for up to 5 years.
+You cannot request me or Aptabase to delete your data, simply because it's impossible to know what data relates to you.
+
+### Strava Integration
+
+VRTI offers an optional integration with [Strava](https://www.strava.com/) to sync your treadmill sessions as activities. This section describes how VRTI handles data related to this integration.
+
+#### What data is collected
+
+When you connect your Strava account, VRTI stores the following on our server:
+
+- **OAuth tokens** (access token and refresh token): Used to interact with the Strava API on your behalf. These tokens are encrypted at rest using AES-256-GCM encryption and are never stored in plaintext.
+- **Strava athlete ID**: A numeric identifier used to associate your Strava account with your VRTI account.
+
+VRTI does **not** store your Strava profile information (name, location, profile picture, etc.), activity history, or any other Strava data. The integration is one-way: VRTI creates activities on your Strava account, but does not read or import your existing Strava data.
+
+#### How your data is used
+
+Your Strava OAuth tokens are used exclusively to:
+
+- Create activities on your Strava account when you sync treadmill sessions.
+- Refresh expired access tokens to maintain your connection.
+
+Your data is never shared with third parties, sold, or used for analytics, advertising, or any purpose other than the Strava integration functionality described above.
+
+#### How to disconnect and delete your data
+
+You can disconnect your Strava account at any time through VRTI's settings. When you unlink your Strava account:
+
+1. VRTI revokes its access with Strava (deauthorization).
+2. All stored OAuth tokens and connection data are permanently deleted from our server.
+
+You can also revoke VRTI's access directly from your [Strava settings](https://www.strava.com/settings/apps).
+
+If you would like assistance with, or request deletion of your data, please [contact me](/vrti/help/support).
+
+### Your rights
+
+You have the right to:
+
+- **Access**: Request information about what data we hold about you.
+- **Deletion**: Request deletion of your data at any time.
+- **Withdraw consent**: Disconnect the Strava integration or stop using VRTI at any time.
+
+For any privacy-related questions or requests, please [contact me](/vrti/help/support).
