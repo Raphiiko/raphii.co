@@ -13,26 +13,26 @@ If you treadmill is not connecting to VRTI, please ensure that:
 - Your specific treadmill is a [supported device](/vrti/help/supported-devices).
 - Your treadmill is plugged into power, and that its power switch is turned on.
 - Your PC's Bluetooth adapter is turned on, and supports Bluetooth Low Energy (BLE)
-- The [correct driver](/vrti/getting-started/connecting-your-treadmill) for your treadmill is selected in the settings
-  menu.
 - Your treadmill is within Bluetooth range of your PC.
 - Your treadmill is not currently connected to another device (e.g. your phone).
+- You connect to your treadmill through VRTI (and _not_ through Windows! If you did this, please remove/forget the device from the "Bluetooth & Devices" list in Windows' settings app). 
 - If your motherboard has built-in bluetooth:
   - Check if the external antenna is hooked up: Using built-in bluetooth without an external antenna is often insufficient.
   - Try using one of the [recommended](/vrti/help/supported-devices) Bluetooth USB dongles: Even on high-end motherboards, the built-in bluetooth adapter is sometimes still problematic.
+  
+
+A couple of actions you can try:
+- Restart VRTI
+- Unplug your treadmill from power, and replug it
+- Remove/forget the device from the "Bluetooth & Devices" list in Windows' settings app.
+- Reboot your PC
 
 ### Will you support _X_ treadmill?
 
-If your treadmill isn't listed, there's still a good chance it will work with VRTI!
-Many Bluetooth enabled treadmills make use of FTMS, the standard Fitness Machine protocol for Bluetooth treadmills.
+The treadmills listed on the [supported devices](/vrti/help/supported-devices) page are the only devices that have been confirmed working by someone. However, if you treadmill isn't listed, it might still work with VRTI! Just try and connect to it with VRTI, and it might end up working anyways. If it does, please shoot me a message so I can add it to the list!
 
-If your treadmill does support bluetooth control through an app, but doesn't work with VRTI, please feel free to [contact me](/vrti/help/support). I'd be happy to take a look if your pad is something we can add support for.
 
-### I have multiple treadmills, how do I connect to the right one?
-
-For now, VRTI connects to the first treadmill it finds.
-
-If you have multiple supported treadmills, make sure to only have one powered on at a time.
+If your treadmill does support Bluetooth control through an app, but doesn't (fully) work with VRTI, please feel free to [contact me](/vrti/help/support). I'd be happy to take a look if your pad is something we can add support for!
 
 ### This looks a lot like some Swedish company's devices!
 
