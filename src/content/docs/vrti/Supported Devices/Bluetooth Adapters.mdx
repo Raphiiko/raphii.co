@@ -1,33 +1,19 @@
 ---
-title: Supported Devices
+title: Bluetooth Adapters
 sidebar:
   #@formatter:off
-  order: 10
+  order: 20
 #@formatter:on
 ---
 
-import { Badge } from "@astrojs/starlight/components";
-import TreadmillCompatibilityList from "../../../../components/vrti/TreadmillCompatibilityList.astro";
 import BluetoothAdapterTable from "../../../../components/vrti/BluetoothAdapterTable";
-
-## Treadmills
-
-Here you'll find a list of treadmill models that have been tested by our community and are known to work with VRTI.
-This list is maintained [here](https://github.com/Duinrahaic/treadmill-compatibility).
-
-Note that if you have a Bluetooth-enabled treadmill that is not listed here, it could still work with VRTI!
-If you have one, please try connecting your treadmill with any of the available driver options, and let me know if it works so I can add it to this list.
-
-<TreadmillCompatibilityList />
-
-## Bluetooth Adapters
 
 Many Bluetooth adapters will work with VRTI, but you'll find a list here of the ones that have been tested and confirmed to work with VRTI.
 If your adapter isn't listed here, there's a good chance it will still work: Generally it just needs to support Bluetooth Low Energy (BLE).
 
 <BluetoothAdapterTable client:visible />
 
-As with the treadmills: if you have a model that is not listed here, please let me know if it works with VRTI so I can add it to the list!
+As with the treadmills: if you have a model that is not listed here, please let me know if it works with VRTI so I can add it to the list.
 
 :::caution[On External Antennas]
 If your Bluetooth adapter supports external antennas (like those built into some desktop motherboards), make sure to use one.

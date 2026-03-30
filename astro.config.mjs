@@ -10,6 +10,12 @@ import cloudflare from "@astrojs/cloudflare";
 // https://astro.build/config
 export default defineConfig({
   site: "https://raphii.co",
+  redirects: {
+    "/vrti/help/supported-devices": {
+      status: 301,
+      destination: "/vrti/supported-devices/treadmills",
+    },
+  },
 
   integrations: [
     starlight({
@@ -97,6 +103,10 @@ export default defineConfig({
             {
               label: "Getting Started",
               autogenerate: { directory: "vrti/Getting Started" },
+            },
+            {
+              label: "Supported Devices",
+              autogenerate: { directory: "vrti/Supported Devices" },
             },
             { label: "Help", autogenerate: { directory: "vrti/Help" } },
             { label: "Community", slug: "vrti/community" },
