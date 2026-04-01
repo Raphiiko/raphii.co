@@ -87,17 +87,14 @@ const BLUETOOTH_TREADMILL_DRIVER_OPTIONS: TreadmillDriverOption[] = [
   {
     driver: "PITPAT_FBA0",
     label: "PitPat",
-    experimental: true,
   },
   {
     driver: "FTMS_UREVO_HYBRID",
     label: "UREVO Hybrid",
-    experimental: true,
   },
   {
     driver: "FTMS_KINGSMITH_G15",
     label: "KingSmith G15",
-    experimental: true,
   },
 ];
 
