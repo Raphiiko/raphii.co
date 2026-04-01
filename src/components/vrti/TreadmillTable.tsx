@@ -324,8 +324,6 @@ export default function TreadmillTable({ data }: TreadmillTableProps) {
       const driverPresentations = getDriverPresentations(item);
       const normalizedSearch = search.toLowerCase();
       const sourceName = item.source?.name?.toLowerCase() ?? "";
-      const vendorAppNames =
-        item.vendorApps?.map((app) => app.name.toLowerCase()) ?? [];
 
       const matchesSearch =
         item.make.toLowerCase().includes(normalizedSearch) ||
@@ -333,8 +331,7 @@ export default function TreadmillTable({ data }: TreadmillTableProps) {
         sourceName.includes(normalizedSearch) ||
         driverPresentations.some((driver) =>
           driver.label.toLowerCase().includes(normalizedSearch),
-        ) ||
-        vendorAppNames.some((name) => name.includes(normalizedSearch));
+        );
 
       const matchesFeatures =
         selectedFeatures.length === 0 ||
@@ -391,19 +388,15 @@ export default function TreadmillTable({ data }: TreadmillTableProps) {
   const isClearDisabled = !search && activeFilterCount === 0;
 
   const hasDetails = (item: Treadmill) => {
-    const hasVendorAppNotes =
-      item.vendorApps?.some((app) => (app.notes?.length ?? 0) > 0) ?? false;
     const hasVRTINotes = (item.vrtiData?.notes?.length ?? 0) > 0;
 
     return (
       (item.sharedNotes?.length ?? 0) > 0 ||
-      (item.vendorApps?.length ?? 0) > 0 ||
       !!item.source?.url ||
       !!item.weight ||
       !!item.vrtiData?.experimental ||
       hasVRTINotes ||
-      getVRTIDrivers(item).length > 1 ||
-      hasVendorAppNotes
+      getVRTIDrivers(item).length > 1
     );
   };
 
@@ -700,7 +693,7 @@ export default function TreadmillTable({ data }: TreadmillTableProps) {
                               {item.vrtiData && (
                                 <div>
                                   <h4 className="font-bold text-slate-400 text-[10px] uppercase tracking-wider mb-2">
-                                    VRTI Compatibility
+                                    VRTI Driver(s)
                                   </h4>
                                   <div className="flex flex-wrap gap-2">
                                     {driverPresentations.map((driver) => (
@@ -748,50 +741,6 @@ export default function TreadmillTable({ data }: TreadmillTableProps) {
                                   </ul>
                                 </div>
                               )}
-
-                              {item.vendorApps &&
-                                item.vendorApps.length > 0 && (
-                                  <div>
-                                    <h4 className="font-bold text-slate-400 text-[10px] uppercase tracking-wider mb-2">
-                                      Vendor Apps
-                                    </h4>
-                                    <div className="flex flex-col gap-3">
-                                      {item.vendorApps.map((app, idx) => (
-                                        <div key={`${app.name}-${idx}`}>
-                                          <div className="flex flex-wrap items-center gap-2">
-                                            <Badge
-                                              text={app.name}
-                                              variant={
-                                                app.supported
-                                                  ? "default"
-                                                  : "caution"
-                                              }
-                                            />
-                                            {!app.supported && (
-                                              <span className="text-xs text-orange-400">
-                                                Unsupported
-                                              </span>
-                                            )}
-                                          </div>
-                                          {app.notes &&
-                                            app.notes.length > 0 && (
-                                              <ul className="list-disc pl-5 space-y-1 text-slate-400 text-sm marker:text-slate-500 mt-2">
-                                                {app.notes.map(
-                                                  (note, noteIdx) => (
-                                                    <li
-                                                      key={`${app.name}-note-${noteIdx}`}
-                                                    >
-                                                      {note}
-                                                    </li>
-                                                  ),
-                                                )}
-                                              </ul>
-                                            )}
-                                        </div>
-                                      ))}
-                                    </div>
-                                  </div>
-                                )}
 
                               {(item.source?.url || item.source?.name) && (
                                 <div className="mt-1">
