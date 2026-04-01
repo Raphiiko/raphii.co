@@ -275,7 +275,11 @@ export default function TreadmillTable({ data }: TreadmillTableProps) {
   const filterRef = useRef<HTMLDivElement>(null);
 
   const supportedData = useMemo(
-    () => data.filter((item) => getVRTIDrivers(item).length > 0),
+    () =>
+      data.filter(
+        (item) =>
+          getVRTIDrivers(item).length > 0 && !hasExperimentalOnlySupport(item),
+      ),
     [data],
   );
 
@@ -737,15 +741,15 @@ export default function TreadmillTable({ data }: TreadmillTableProps) {
 
                               {combinedNotes.length > 0 && (
                                 <div>
-                                    <h4 className="font-bold text-slate-400 text-[10px] uppercase tracking-wider mb-2">
-                                      Details & Notes
-                                    </h4>
-                                    <ul className="list-disc pl-5 space-y-1 text-slate-300 text-sm marker:text-slate-500">
-                                      {combinedNotes.map((note, idx) => (
-                                        <li key={idx}>{note}</li>
-                                      ))}
-                                    </ul>
-                                  </div>
+                                  <h4 className="font-bold text-slate-400 text-[10px] uppercase tracking-wider mb-2">
+                                    Details & Notes
+                                  </h4>
+                                  <ul className="list-disc pl-5 space-y-1 text-slate-300 text-sm marker:text-slate-500">
+                                    {combinedNotes.map((note, idx) => (
+                                      <li key={idx}>{note}</li>
+                                    ))}
+                                  </ul>
+                                </div>
                               )}
 
                               {item.vendorApps &&
