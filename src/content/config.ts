@@ -10,6 +10,6 @@ export const collections = {
         //   "🚧 This site is currently under construction. Please excuse the mess! 🚧",
         // }),
       }),
-    }),
+     }),
   }),
 };

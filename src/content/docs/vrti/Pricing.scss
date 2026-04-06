@@ -1,12 +1,27 @@
 table {
   width: 100% !important;
+
   th {
     white-space: nowrap;
   }
+
   td {
     vertical-align: middle !important;
+
     &:first-child {
       width: 100% !important;
     }
+  }
+
+  .pricing-price-note {
+    display: inline-block;
+    font-size: 0.75em;
+    opacity: 0.75;
+    white-space: nowrap;
+  }
+
+  .pricing-cta {
+    justify-content: center;
+    white-space: nowrap;
   }
 }

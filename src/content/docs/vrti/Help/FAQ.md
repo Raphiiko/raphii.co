@@ -31,7 +31,6 @@ A couple of actions you can try:
 
 The treadmills listed on the [supported treadmills](/vrti/supported-devices/treadmills) page are the only devices that have been confirmed working by someone. However, if your treadmill isn't listed, it might still work with VRTI! Just try and connect to it with VRTI, and it might end up working anyways. If it does, please shoot me a message so I can add it to the list!
 
-
 If your treadmill does support Bluetooth control through an app, but doesn't (fully) work with VRTI, please feel free to [contact me](/vrti/help/support). I'd be happy to take a look if your pad is something we can add support for!
 
 ### This looks a lot like some Swedish company's devices!
