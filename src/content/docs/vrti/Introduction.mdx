@@ -1,7 +1,7 @@
 ---
 #@formatter:off
 title: VRTI - VR Treadmill Interface
-description: Exercise in VR using your Bluetooth-enabled treadmill. Control your treadmill and translate its movement into VRChat and other VR games.
+description: Walk, jog, and run in VR with your Bluetooth treadmill. VRTI connects supported treadmills to VRChat and other games with headset controls, tracking, and more.
 sidebar:
   label: Introduction
   order: 0
@@ -10,12 +10,12 @@ next:
   label: Getting Started
 prev: false
 hero:
-  tagline: '<div class="max-w-64">Exercise in VR using your Bluetooth-enabled treadmill</div>'
+  tagline: '<div class="max-w-64">Walk, jog, and run in VR with your Bluetooth treadmill</div>'
   image:
     html: '<div class="hero-image"><img src="/img/vrti_hero.png"/></div>'
   actions:
-    - text: Download
-      link: "https://github.com/Raphiiko/VRTI-Releases/releases/latest/"
+    - text: Get on Steam
+      link: "https://store.steampowered.com/app/4411910/VRTI__VR_Treadmill_Interface/"
       icon: right-arrow
       variant: primary
 head:
@@ -26,7 +26,7 @@ head:
   - tag: meta
     attrs:
       property: og:description
-      content: Exercise in VR using your Bluetooth-enabled treadmill. Control your treadmill and translate its movement into VRChat and other VR games.
+      content: Walk, jog, and run in VR with your Bluetooth treadmill. VRTI connects supported treadmills to VRChat and other games with headset controls, tracking, and more.
   - tag: meta
     attrs:
       property: og:image
@@ -62,7 +62,7 @@ head:
   - tag: meta
     attrs:
       name: twitter:description
-      content: Exercise in VR using your Bluetooth-enabled treadmill. Control your treadmill and translate its movement into VRChat and other VR games.
+      content: Walk, jog, and run in VR with your Bluetooth treadmill. VRTI connects supported treadmills to VRChat and other games with headset controls, tracking, and more.
   - tag: meta
     attrs:
       name: twitter:image
@@ -72,14 +72,15 @@ head:
 
 import "Introduction.scss";
 
-**With VRTI (VR Treadmill Interface) you can control your Bluetooth-enabled treadmill, and translate its movement into your game.
-This enables you to take walks with your friends in VRChat, or exercise in your favourite VR (or even non-VR) games.**
+**With VRTI (VR Treadmill Interface) you can control your Bluetooth-enabled treadmill and translate its movement into VRChat.**
 
-VRTI provides movement input to your game, either over [OSC](https://docs.vrchat.com/docs/osc-overview) in the case of VRChat, or by emulating a virtual Xbox controller for other games (XInput).
-The speed at which you walk in-game is determined by the speed of your treadmill.
+VRTI uses [OSC](https://docs.vrchat.com/docs/osc-overview) to turn your real walking pace into movement in VRChat, and can also emulate a virtual Xbox controller through XInput.
+You can control your treadmill from the desktop app or from inside VR: start and stop it, adjust speed, use customizable [SteamVR controller bindings](/vrti/getting-started/steamvr-controller-bindings), and enable yaw lock to keep walking straight while you look around.
 
-VRTI communicates with your treadmill over Bluetooth (Low Energy).
-Currently, VRTI supports various KingSmith WalkingPad models, as well as most treadmills that support the Bluetooth FTMS (Fitness Machine Service) protocol.
-Please check the current list of [supported treadmills](/vrti/supported-devices/treadmills) to see if your treadmill is compatible.
+VRTI also tracks your sessions, including distance, steps, and active time.
+It includes long-term statistics, support for syncing sessions to [Strava](https://www.strava.com/), and milestone notifications to help you keep track of your progress over time.
 
-Read on in the next section to find out how to get started!
+VRTI supports many Bluetooth-enabled treadmills, including various KingSmith WalkingPad models and most treadmills that implement the FTMS (Fitness Machine Service) protocol.
+The [supported treadmills](/vrti/supported-devices/treadmills) list is the best place to start, but it is not exhaustive. If your treadmill can be controlled over Bluetooth through its own app, there is a good chance it may work with VRTI too. If you are unsure, try the free demo first to test compatibility.
+
+Read on in the next section to learn how to get started!
