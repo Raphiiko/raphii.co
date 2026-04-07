@@ -104,7 +104,7 @@ export default defineConfig({
             },
             { label: "Help", autogenerate: { directory: "vrti/Help" } },
             { label: "Community", slug: "vrti/community" },
-            { label: "Pricing", slug: "vrti/pricing" },
+            { label: "Get VRTI", slug: "vrti/get-vrti" },
             {
               label: "Patch notes",
               collapsed: true,
