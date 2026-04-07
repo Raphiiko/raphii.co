@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "postinstall": "npm run codegen",
     "dev": "astro dev",
     "start": "npm run dev",
     "check": "astro check",
