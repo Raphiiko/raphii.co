@@ -98,13 +98,13 @@ export default defineConfig({
               label: "Getting Started",
               autogenerate: { directory: "vrti/Getting Started" },
             },
+            { label: "VRTI Features", slug: "vrti/vrti-features" },
             {
               label: "Supported Devices",
               autogenerate: { directory: "vrti/Supported Devices" },
             },
             { label: "Help", autogenerate: { directory: "vrti/Help" } },
             { label: "Community", slug: "vrti/community" },
-            { label: "Get VRTI", slug: "vrti/get-vrti" },
             {
               label: "Patch notes",
               collapsed: true,
