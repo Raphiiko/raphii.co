@@ -96,6 +96,14 @@ const BLUETOOTH_TREADMILL_DRIVER_OPTIONS: TreadmillDriverOption[] = [
     driver: "FTMS_KINGSMITH_G15",
     label: "KingSmith G15",
   },
+  {
+    driver: "FTMS_KINGSMITH_24E2",
+    label: "KingSmith Type C",
+  },
+  {
+    driver: "ESLINKER_YPOO",
+    label: "ESLinker",
+  },
 ];
 
 const DRIVER_OPTIONS = Object.fromEntries(
@@ -119,6 +127,9 @@ const UNSUPPORTED_DRIVER_CODE = "UNSUPPORTED";
 
 const DRIVER_BADGE_STYLES: Record<string, string> = {
   FTMS: "bg-fuchsia-950/60 text-fuchsia-200 border-fuchsia-700/70",
+  ESLINKER_YPOO: "bg-violet-950/60 text-violet-200 border-violet-700/70",
+  FTMS_KINGSMITH_24E2:
+    "bg-orange-950/60 text-orange-200 border-orange-700/70",
   FTMS_KINGSMITH_G15: "bg-rose-950/60 text-rose-200 border-rose-700/70",
   FTMS_UREVO_HYBRID: "bg-cyan-950/60 text-cyan-200 border-cyan-700/70",
   GENERIC: "bg-fuchsia-950/60 text-fuchsia-200 border-fuchsia-700/70",
