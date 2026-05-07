@@ -89,14 +89,6 @@ const BLUETOOTH_TREADMILL_DRIVER_OPTIONS: TreadmillDriverOption[] = [
     label: "PitPat",
   },
   {
-    driver: "FTMS_UREVO_HYBRID",
-    label: "UREVO Hybrid",
-  },
-  {
-    driver: "FTMS_KINGSMITH_G15",
-    label: "KingSmith G15",
-  },
-  {
     driver: "FTMS_KINGSMITH_24E2",
     label: "KingSmith Type C",
   },
@@ -117,27 +109,17 @@ const DRIVER_LABELS: Record<string, string> = {
       option.label,
     ]),
   ),
-  GENERIC: "Generic FTMS",
   "Kingsmith Walking Pad": "KingSmith Type A",
-  WALKINGPAD: "KingSmith Type A",
 };
-
-const UNSUPPORTED_DRIVER_LABEL = "No VRTI Driver";
-const UNSUPPORTED_DRIVER_CODE = "UNSUPPORTED";
 
 const DRIVER_BADGE_STYLES: Record<string, string> = {
   FTMS: "bg-fuchsia-950/60 text-fuchsia-200 border-fuchsia-700/70",
   ESLINKER_YPOO: "bg-violet-950/60 text-violet-200 border-violet-700/70",
   FTMS_KINGSMITH_24E2:
     "bg-orange-950/60 text-orange-200 border-orange-700/70",
-  FTMS_KINGSMITH_G15: "bg-rose-950/60 text-rose-200 border-rose-700/70",
-  FTMS_UREVO_HYBRID: "bg-cyan-950/60 text-cyan-200 border-cyan-700/70",
-  GENERIC: "bg-fuchsia-950/60 text-fuchsia-200 border-fuchsia-700/70",
   KINGSMITH_1234: "bg-sky-950/60 text-sky-200 border-sky-700/70",
   KINGSMITH_FE00: "bg-emerald-950/60 text-emerald-200 border-emerald-700/70",
   PITPAT_FBA0: "bg-amber-950/60 text-amber-200 border-amber-700/70",
-  UNSUPPORTED: "bg-red-950/50 text-red-300 border-red-900",
-  WALKINGPAD: "bg-emerald-950/60 text-emerald-200 border-emerald-700/70",
 };
 
 const getDriverDisplayName = (driver: string) =>
@@ -151,31 +133,19 @@ const getVRTIDrivers = (item: Treadmill) => item.vrtiData?.driver ?? [];
 const getDriverPresentations = (item: Treadmill): DriverPresentation[] => {
   const drivers = getVRTIDrivers(item);
 
-  return drivers.length > 0
-    ? drivers.map((driver) => ({
-        code: driver,
-        label: getDriverDisplayName(driver),
-        badgeClassName:
-          DRIVER_BADGE_STYLES[driver] ??
-          "bg-slate-800 text-slate-300 border-slate-700",
-      }))
-    : [
-        {
-          code: UNSUPPORTED_DRIVER_CODE,
-          label: UNSUPPORTED_DRIVER_LABEL,
-          badgeClassName: DRIVER_BADGE_STYLES[UNSUPPORTED_DRIVER_CODE],
-        },
-      ];
+  return drivers.map((driver) => ({
+    code: driver,
+    label: getDriverDisplayName(driver),
+    badgeClassName:
+      DRIVER_BADGE_STYLES[driver] ??
+      "bg-slate-800 text-slate-300 border-slate-700",
+  }));
 };
 
 const getDriverBadgeVariant = (
   driverLabel: string,
   experimental: boolean,
 ): "default" | "success" | "tip" | "caution" | "danger" => {
-  if (driverLabel === UNSUPPORTED_DRIVER_LABEL) {
-    return "danger";
-  }
-
   if (experimental) {
     return "success";
   }
