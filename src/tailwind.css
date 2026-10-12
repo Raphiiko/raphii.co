@@ -1,0 +1,82 @@
+@layer base, starlight, theme, components, utilities;
+
+@import "@astrojs/starlight-tailwind";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme {
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  --color-gray-950: #030712;
+
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans",
+    Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
+}
+
+/* Dark mode colors. */
+:root {
+  --sl-color-accent-low: var(--color-white);
+  --sl-color-accent: var(--color-white);
+  --sl-color-accent-high: var(--color-white);
+  --sl-color-white: var(--color-white);
+  --sl-color-gray-1: var(--color-gray-300);
+  --sl-color-gray-2: var(--color-gray-400);
+  --sl-color-gray-3: var(--color-gray-500);
+  --sl-color-gray-4: var(--color-gray-600);
+  --sl-color-gray-5: var(--color-gray-700);
+  --sl-color-gray-6: var(--color-gray-800);
+  --sl-color-gray-7: var(--color-gray-900);
+  --sl-color-black: var(--color-black);
+
+  --sl-color-bg-sidebar: var(--color-black);
+  --sl-color-bg-nav: transparent;
+  --sl-color-text-invert: var(--color-black);
+}
+
+header {
+  background-color: transparent;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid transparent !important;
+}
+
+#starlight__mobile-toc {
+  background-color: black;
+}
+
+.social-icons::after {
+  display: none;
+}
+
+.docs-image-row {
+  @apply flex flex-col;
+  & > img {
+    @apply rounded-sm shrink-0 block;
+  }
+  & > div {
+    @apply flex-1;
+  }
+  @media (max-width: 50rem) {
+    & > img {
+      @apply max-w-[80%] ml-auto mr-auto;
+    }
+  }
+  @media (min-width: 50rem) {
+    @apply flex-row items-start;
+    & > img {
+      @apply ml-8 shrink-0 h-auto;
+    }
+  }
+}
