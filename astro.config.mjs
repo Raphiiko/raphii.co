@@ -13,6 +13,7 @@ export default defineConfig({
     starlight({
       title: ">raphii",
       lastUpdated: true,
+      markdown: { headingLinks: false },
       social: [
         { icon: "github", label: "GitHub", href: "https://github.com/Raphiiko" },
         { icon: "blueSky", label: "BlueSky", href: "https://bsky.app/profile/raphii.co" },
