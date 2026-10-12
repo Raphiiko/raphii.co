@@ -8,7 +8,7 @@ The documentation of my projects, like OyasumiVR and VRTI, resides here.
 ## Development
 
 If you would like to contribute to some of the documentation on this website, you can do so by following these steps. 
-The only prerequisite is that you have Node.js (20+) installed.
+The only prerequisite is that you have Node.js (22.12+) installed.
 
 1. Clone this repository
 2. Run `$ npm install`

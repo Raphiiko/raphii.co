@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 .idea/
 .vscode/
+
+# agent-browser navigation recordings
+.nav-audit/

@@ -1,11 +1,8 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
-import starlightUtils from "@lorenzo_lewis/starlight-utils";
-
-import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,14 +12,14 @@ export default defineConfig({
     starlight({
       title: ">raphii",
       lastUpdated: true,
-      social: {
-        github: "https://github.com/Raphiiko",
-        blueSky: "https://bsky.app/profile/raphii.co",
-        "x.com": "https://x.com/Raphiiko",
-        discord: "https://discord.gg/7MqdPJhYxC",
-        email: "mailto:iam@raphii.co",
-        patreon: "https://patreon.com/Raphii",
-      },
+      social: [
+        { icon: "github", label: "GitHub", href: "https://github.com/Raphiiko" },
+        { icon: "blueSky", label: "BlueSky", href: "https://bsky.app/profile/raphii.co" },
+        { icon: "x.com", label: "X", href: "https://x.com/Raphiiko" },
+        { icon: "discord", label: "Discord", href: "https://discord.gg/7MqdPJhYxC" },
+        { icon: "email", label: "Email", href: "mailto:iam@raphii.co" },
+        { icon: "patreon", label: "Patreon", href: "https://patreon.com/Raphii" },
+      ],
       favicon: "/favicon-96x96.png",
       head: [
         {
@@ -80,15 +77,8 @@ export default defineConfig({
       ],
       sidebar: [
         {
-          label: "leadingNavLinks",
-          items: [
-            { label: "OyasumiVR", slug: "oyasumivr/introduction" },
-            { label: "VRTI", slug: "vrti/introduction" },
-          ],
-        },
-        {
           label: "OyasumiVR",
-          autogenerate: { directory: "oyasumivr" },
+          items: [{ autogenerate: { directory: "oyasumivr" } }],
         },
         {
           label: "VRTI",
@@ -96,51 +86,39 @@ export default defineConfig({
             { label: "Introduction", slug: "vrti/introduction" },
             {
               label: "Getting Started",
-              autogenerate: { directory: "vrti/Getting Started" },
+              items: [{ autogenerate: { directory: "vrti/Getting Started" } }],
             },
             { label: "VRTI Features", slug: "vrti/vrti-features" },
             {
               label: "Supported Devices",
-              autogenerate: { directory: "vrti/Supported Devices" },
+              items: [{ autogenerate: { directory: "vrti/Supported Devices" } }],
             },
-            { label: "Help", autogenerate: { directory: "vrti/Help" } },
+            { label: "Help", items: [{ autogenerate: { directory: "vrti/Help" } }] },
             { label: "Community", slug: "vrti/community" },
             {
               label: "Patch notes",
               collapsed: true,
-              autogenerate: { directory: "vrti/Changelog" },
+              items: [{ autogenerate: { directory: "vrti/Changelog" } }],
             },
             {
               label: "Developer",
-              autogenerate: { directory: "vrti/Developer" },
+              items: [{ autogenerate: { directory: "vrti/Developer" } }],
             },
           ],
         },
       ],
-      customCss: ["./src/tailwind.scss"],
-      plugins: [
-        starlightUtils({
-          multiSidebar: {
-            switcherStyle: "hidden",
-          },
-          navLinks: {
-            leading: {
-              useSidebarLabelled: "leadingNavLinks",
-            },
-          },
-        }),
-      ],
+      customCss: ["./src/tailwind.css"],
+      routeMiddleware: "./src/routeData.ts",
       components: {
+        SiteTitle: "./src/components/CustomSiteTitle.astro",
         ThemeProvider: "./src/components/CustomThemeProvider.astro",
         ThemeSelect: "./src/components/CustomThemeSelect.astro",
       },
     }),
-    tailwind({
-      applyBaseStyles: false,
-    }),
     react(),
   ],
 
-  output: "server",
-  adapter: cloudflare(),
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

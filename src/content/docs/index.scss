@@ -3,16 +3,21 @@
 }
 
 .hero-image {
-  @apply relative w-full;
+  position: relative;
+  width: 100%;
   aspect-ratio: 1739/2022;
 
   img {
-    @apply w-full absolute top-1/2 -translate-y-1/2;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   @media (min-width: 50rem) {
     img {
-      @apply right-0 w-[150%];
+      right: 0;
+      width: 150%;
     }
   }
 }
