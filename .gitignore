@@ -25,3 +25,4 @@ pnpm-debug.log*
 
 # agent-browser navigation recordings
 .nav-audit/
+.wrangler/

@@ -3,6 +3,7 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
+import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
@@ -117,6 +118,9 @@ export default defineConfig({
     }),
     react(),
   ],
+
+  session: false,
+  adapter: cloudflare({ imageService: "compile", prerenderEnvironment: "node" }),
 
   vite: {
     plugins: [tailwindcss()],
